@@ -72,11 +72,40 @@ a.oae-plain-link:hover {
  *    e.g. <span class="oae-threedots">Some very very long text</span>
  */
 
+/* stuff modified */
+
 .oae-threedots {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+
+/* added for counter */
+.oae-counters {
+    float: right;
+    height: 50px;
+    width: 50px;
+    border: 1px dashed;
+    text-align: center;
+    border-color: rgba(0, 0, 0, 0.35);
+}
+h3.oae-counters {
+    font-size: 26px;
+    font-weight: 200;
+}
+/*added for description*/
+.oae-descriptions{
+    line-height: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /*display only up to two lines*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    
+    width: 50em;
 }
 
 
@@ -902,10 +931,12 @@ div.oae-thumbnail i[class^="icon-"] {
 
 .oae-listitem small {
     line-height: 1;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600; 
     font-style: italic;
     text-transform: uppercase;
 }
+
 
 .oae-listitem.oae-listitem-compact small {
     display: inline-block;
