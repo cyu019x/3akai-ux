@@ -21,7 +21,7 @@
             {var visibility = entityData['oae:visibility']}
         {/if}
 
-        <li>
+        <li>            
             <!-- THUMBNAIL VIEW -->
             <div class="oae-list-grid-item">
                 <div class="oae-tile">
@@ -36,17 +36,6 @@
                 ${renderCheckbox(entityData, 'grid', showCheckbox)}
             </div>
 
-            <!-- DETAILED LIST VIEW -->
-            <div class="oae-list-details-item">
-                <div class="oae-listitem">
-                    ${renderCheckbox(entityData, 'details', showCheckbox)}
-                    ${renderThumbnail(entityData, null, null, null, customImage)}
-                    ${renderCounters(entityData, 'details')}
-                    <div>
-                        ${renderMetadata(entityData, 'details',metadata)}
-                    </div>
-                </div>
-            </div>
 
             <!-- COMPACT LIST VIEW -->
             <div class="oae-list-compact-item">
@@ -58,6 +47,18 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- DETAILED LIST VIEW -->
+            <div class="oae-list-details-item">
+                <div class="oae-listitem">
+                    ${renderCheckbox(entityData, 'details', showCheckbox)}
+                    ${renderThumbnail(entityData, null, null, null, customImage)}
+                    ${renderCounters(entityData, 'details')}
+                    <div>
+                        ${renderMetadata(entityData, 'details',metadata)}
+                    </div>
+                </div>
+            </div>            
         </li>
     {/if}
 {/macro}
@@ -224,9 +225,22 @@
 -->
 {macro renderCounters(entityData, type)}
     <!-- only for detailed list view-->
+    <!-- current TrimPath modifier encodeForHTML doesn't take care of numeric input 0 -->
     {if type == 'details'}
-        <h3 class="oae-counters"> 17 </h3> <!-- add view count -->
-        <h3 class="oae-counters"> 16 </h3> <!-- add reply count -->
-        <h3 class="oae-counters"> 15 </h3> <!-- add vote count-->
+        {if entityData.viewCount == 0}
+            <h3 class="oae-counters"> 0 </h3> <!-- add view count -->
+        {else}
+            <h3 class="oae-counters"> ${entityData.viewCount|encodeForHTML} </h3> <!-- add view count -->
+        {/if}
+        {if entityData.replyCount == 0}
+            <h3 class="oae-counters"> 0 </h3> <!-- add reply count -->
+        {else}
+            <h3 class="oae-counters"> ${entityData.replyCount|encodeForHTML} </h3> <!-- add reply count -->
+        {/if}
+        {if entityData.voteCount == 0}
+            <h3 class="oae-counters"> 0 </h3> <!-- add vote count -->
+        {else}
+            <h3 class="oae-counters"> ${entityData.voteCount|encodeForHTML} </h3> <!-- add vote count -->
+        {/if}
     {/if}
 {/macro}

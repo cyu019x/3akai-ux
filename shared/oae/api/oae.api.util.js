@@ -1016,7 +1016,7 @@ define(['exports', 'require', 'jquery', 'underscore', 'oae.api.config', 'jquery.
          * Sanitizes user input in a manner that makes it safe for the input to be placed
          * inside of an HTML tag.
          *
-         * @param  {String}     [input]         The user input string that should be sanitized. If this is not provided, an empty string will be returned.
+         * @param  {String}     [input]  The user input string that should be sanitized. If this is not provided, an empty string will be returned.
          * @return {String}                     The sanitized user input, ready to be put inside of an HTML tag.
          */
         var encodeForHTML = function(input) {
